@@ -1,2 +1,31 @@
+# PyCharm PROJECTS FILES
 .idea/
+
+# PyCache TRASH FILES
 generator/__pycache__
+
+# TeX TRASH FILES
+*.aux
+*.idx
+*.toc
+*.log
+*.lof
+*.lot
+*.out
+*.ilg
+*.ind
+*.tmp
+*.gls
+*.glo
+*.fdb_latexmk
+*.fls
+*.xtr
+*.synctex.gz
+*.synctex*
+_minted-*/
+svg-inkscape/
+
+# RENDERED FILES (temporary)
+*.pdf
+*.png
+*.svg
