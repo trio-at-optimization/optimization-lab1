@@ -2,7 +2,7 @@
 .idea/
 
 # PyCache TRASH FILES
-generator/__pycache__
+*.pyc
 
 # TeX TRASH FILES
 *.aux
