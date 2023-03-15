@@ -25,7 +25,10 @@
 _minted-*/
 svg-inkscape/
 
-# RENDERED FILES (temporary)
+# RENDERED FILES
 *.pdf
 *.png
 *.svg
+
+# ONLY WANTED
+!report.pdf
