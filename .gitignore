@@ -30,5 +30,7 @@ svg-inkscape/
 *.png
 *.svg
 
+!/source/*/*
+
 # ONLY WANTED
 !report.pdf
