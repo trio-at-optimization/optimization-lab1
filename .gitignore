@@ -24,3 +24,9 @@ svg-inkscape/
 *.png
 *.svg
 *.csv
+
+# ONLY WANTED
+
+!Data/*
+!HQ/*
+!Image/*
