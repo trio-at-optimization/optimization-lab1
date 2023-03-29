@@ -1,9 +1,3 @@
-# PyCharm PROJECTS FILES
-.idea/
-
-# PyCache TRASH FILES
-*.pyc
-
 # TeX TRASH FILES
 *.aux
 *.idx
@@ -29,8 +23,3 @@ svg-inkscape/
 *.pdf
 *.png
 *.svg
-
-!/source/*/*
-
-# ONLY WANTED
-!report.pdf
