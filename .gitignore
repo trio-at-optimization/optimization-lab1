@@ -26,7 +26,7 @@ svg-inkscape/
 *.csv
 
 # MACOS GIT FILES
-.DS_store
+.DS_Store
 
 # ONLY WANTED
 
