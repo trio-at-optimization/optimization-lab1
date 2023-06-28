@@ -1,97 +1,94 @@
 \documentclass[12pt, a4paper, oneside, final]{article}
 \usepackage[margin = 1in, bottom = 1in]{geometry}
 
+\pdfminorversion = 5 
+\pdfcompresslevel = 9
+\pdfobjcompresslevel = 2
+
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english, russian]{babel}
-\usepackage{xcolor}
-\usepackage{ulem}
-\usepackage{soulutf8}
-\usepackage{soul}
-\usepackage{fancyhdr}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage{xcolor, ulem, soulutf8, soul, fancyhdr, amsmath, amssymb, amsthm, svg, wrapfig, csvsimple, float, caption, subcaption, titlesec, hyperref, multicol, listings, tocloft, longtable, skak, stmaryrd, color, minted}
 \usepackage[shortlabels]{enumitem}
-\usepackage{titlesec}
-\usepackage{hyperref}
-\usepackage{multicol}
 \usepackage[most]{tcolorbox}
-\usepackage{listings}
-\usepackage[makeroom]{cancel}
-\usepackage{tocloft}
-\usepackage{amsthm}
-\usepackage{longtable}
-\usepackage{skak}
-\usepackage{stmaryrd}
-\usepackage{listings}
-\usepackage{color}
 \usepackage[framemethod = tikz]{mdframed}
-\usepackage{svg}
-\usepackage{wrapfig}
-\usepackage{csvsimple}
-\usepackage{float}
-\usepackage{caption, subcaption}
-\renewcommand{\figurename}{}
-\addto\captionsrussian{\renewcommand{\figurename}{}}
-\captionsetup[table]{labelformat=empty}
 
-\hypersetup{
-	colorlinks,
-	citecolor = black,
-	filecolor = black,
-	linkcolor = blue,
-	urlcolor = blue
-}
-\lstset{
-	basicstyle = \ttfamily,
-	mathescape
-}
+\definecolor{codegreen}{rgb}{0, 0.6, 0}
+\definecolor{codegray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{codepurple}{rgb}{0.58, 0, 0.82}
+\definecolor{backcolour}{rgb}{0.95, 0.95, 0.92}
 
+\hypersetup{colorlinks, citecolor = pink, filecolor = pink, linkcolor = pink, urlcolor = pink}
+
+\everymath{\displaystyle}
 \binoppenalty = 10000
 \relpenalty = 10000
 \sloppy
 
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE]{\nouppercase{\rightmark\hfill\leftmark}}
-\fancyhead[RO]{\nouppercase{\leftmark\hfill\rightmark}}
-\fancyfoot[LE,RO]{\hfill\thepage\hfill}
+\newtcblisting{pseudocode}{
+	listing only,
+	breakable,
+	colback = backcolour,
+	enhanced jigsaw,
+	sharp corners,
+	boxrule = 0pt,
+	frame hidden,
+	listing options = {
+		mathescape,
+		commentstyle = \color{codegreen},
+		keywordstyle = \color{magenta},
+		numberstyle = \tiny\color{codegray},
+		stringstyle = \color{codepurple},
+		basicstyle = \ttfamily\footnotesize,
+		breakatwhitespace = false,
+		breaklines = true,
+		captionpos = b,
+		keepspaces = true,
+		numbers = left,
+		numbersep = 5pt,
+		showspaces = false,
+		showstringspaces = false,
+		showtabs = false,
+		tabsize = 4,
+		inputencoding = utf8,
+		language = python
+	}
+}
 
 \renewcommand*{\theenumi}{\thesection.\arabic{enumi}}
 \renewcommand*{\theenumii}{\alph{enumii}}
 \renewcommand*{\labelitemi}{\ensuremath{\triangleright}}
 
-\definecolor{blueish}{rgb}{0.96,0.96,1.0}
-\definecolor{grayblueish}{rgb}{0.97,0.97,0.98}
-\definecolor{transblue}{rgb}{0.9,0.9,0.97}
-\definecolor{transred}{rgb}{0.97,0.9,0.9}
-
-\definecolor{light-gray}{gray}{0.95}
-\lstset{columns = fullflexible, basicstyle = \ttfamily, mathescape}
-\surroundwithmdframed[hidealllines = true, backgroundcolor = light-gray, innerleftmargin = 15pt, innertopmargin = 0pt, innerbottommargin = 0pt]{lstlisting}
-
-\everymath{\displaystyle}
-
-\begin{document}
-	\thispagestyle{empty}
-	\vspace*{0.5em}
+\def\cover{
 	\begin{center}
 		{Национальный исследовательский университет ИТМО\\Факультет информационных технологий и программирования\\Прикладная математика и информатика}\\[5.0em]
 		{\Huge \bfseries Методы оптимизации}\\[0.5em]
 		{\large Отчет по лабораторной работе №1}\\[0.5em]
 		\textcolor{gray}{\textlangle Собрано \today\textrangle}
 	\end{center}
+}
+
+\def\officials{
+	\begin{tabular}{ll}
+		\textbf{Работу выполнили:} \\ Бактурин Савелий Филиппович M32331 \\ Вереня Андрей Тарасович M32331 \\ Сотников Максим Владимирович M32331 \vspace*{1em} \\
+		\textbf{Преподаватель:} \\ Ким Станислав Евгеньевич
+	\end{tabular}
+}
+
+\def\firstpage{
+	\thispagestyle{empty}
+	\vspace*{0.5em}
+	\cover
 	\begingroup
-	\def\hd{\begin{tabular}{ll}
-			\textbf{Работу выполнили:} \\ Бактурин Савелий Филиппович M32331 \\ Вереня Андрей Тарасович M32331 \\ Сотников Максим Владимирович M32331 \vspace*{1em} \\
-			\textbf{Преподаватель:} \\ Ким Станислав Евгеньевич
-		\end{tabular}
-	}
 	\vspace*{30em}
-	\newlength{\hdwidth}
-	\settowidth{\hdwidth}{\hd}
-	\hfill\begin{minipage}{\hdwidth}\hd\end{minipage}
+	\newlength{\officialswidth}
+	\settowidth{\officialswidth}{\officials}
+	\hfill\begin{minipage}{\officialswidth}\officials\end{minipage}
 	\endgroup
+}
+
+\begin{document}
+	\firstpage
 	\newpage
 	\section*{Задача 1}
 	\subsection*{Постановка задачи}
@@ -107,19 +104,19 @@
 	\] где $x_{0}$ будет задаваться некоторым множеством $\text{INIT} = \{x^{0}_{0}, ~ x^{1}_{0}, ~ \ldots, ~ x^{n - 1}_{0}\}$~-- то есть точка, от которой мы собираемся двигаться.
 
 	В качестве промежуточного итога предоставим псевдо-алгоритм для решения этой задачи:
-	\begin{lstlisting}
-	function $f(x)$:
-		/*$implementation~defined$*/
+	\begin{pseudocode}
+function $f(x)$:
+	/*$implementation~defined$*/
 
-	function $\nabla{f(x)}$:
-		return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$
+function $\nabla{f(x)}$:
+	return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$;
 
-	function $gradient(f(x))$:
-		$x_{0} \gets \text{INIT}$
-		$\lambda \gets \texttt{const}$
-		$\forall i \in [1, k]$:
-		    $x_{i} \gets x_{i - 1} - \lambda \cdot \nabla{f(x_{i - 1})}$
-	\end{lstlisting}
+function $gradient(f(x))$:
+	$x_{0} \gets \text{INIT}$;
+	$\lambda \gets \texttt{const}$;
+	$\forall i \in [1, k]$ do
+		$x_{i} \gets x_{i - 1} - \lambda \cdot \nabla{f(x_{i - 1})}$;
+	\end{pseudocode}
 	\subsection*{Пример 1. <<Шагомер>>}
 	В качестве человекочитаемых функций и возможности живых сущностей видеть в трехмерном пространстве здесь и далее мы посмотрим функции, определенных только на $\mathbb{R}^{3}$. Рассмотрим функцию $f(x, y) = x^{2} + y^{2}$, причем мы зададим ему отвратительно широкий шаг в $learning~rate = 1$. Запустим наш алгоритм на нем и посмотрим на график повнимательнее.
 	\begin{figure}[H]
@@ -209,22 +206,22 @@
 	В этом случае на последнем шаге мы смотрим не на знак, а на значение функции $f(x \pm \varepsilon)$ и также здесь смотрим на то, что мы хотим найти: если минимум, то перебрасываем правый конец в рассмотренную точку $x$, в ином случае~-- левый.
 
 	Обозначим за $\varepsilon$~-- как некоторая окрестность минимума, $l, r \in \mathbb{R}$, задана $f(x) : \mathbb{R} \to \mathbb{R}$. Тогда, в качестве промежуточного итога предоставим псевдо-алгоритм для решения этой задачи:
-	\begin{lstlisting}
-	function $f(x)$:
-		/*$implementation~defined$*/
+	\begin{pseudocode}
+function $f(x)$:
+	/*$implementation~defined$*/
 
-	function $dichotomy2d(l, ~ r, ~ \varepsilon)$:
-		$x \gets l$
-		$\forall~\infty$:
-			$m \gets \dfrac{x + r}{2}$
-			$f_{1} \gets f(m + \varepsilon)$
-			$f_{2} \gets f(m - \varepsilon)$
+function $dichotomy2d(l, ~ r, ~ \varepsilon)$:
+	$x \gets l$;
+	$\forall~\infty$ do
+		$m \gets \dfrac{x + r}{2}$;
+		$f_{1} \gets f(m + \varepsilon)$;
+		$f_{2} \gets f(m - \varepsilon)$;
 
-			if $|f_{1} - f_{2}| < \varepsilon$ then
-				$r \gets m$
-			else
-				$x \gets m$
-	\end{lstlisting}
+		if $|f_{1} - f_{2}| < \varepsilon$ then
+			$r \gets m$;
+		else
+			$x \gets m$;
+	\end{pseudocode}
 	Теперь рассмотрим иной, более общий случай, $n$-мерный. Порассуждаем, в чем была проблема градиентного спуска: в описанном выше алгоритме цикл хода по направлению антиградиента (то есть, наискорейшего спуска) ничего не мог сделать в тех случаях, когда до приближенного минимума остается сделать не один гигантский шаг в $learning~rate$ величину, а поменьше, в точности до некоторого малого $\varepsilon$.
 
 	Для исправления столь шальной ситуации, когда алгоритм, который работает не на количество шагов, а~-- на критерий, то есть когда время ожидания отклика программы потребует века, мы будем либо уменьшать шаг в только тех случаях, когда на заданном шаге есть пренеприятный шпион в виде локального минимум на это отрезке, либо не изменять, то есть когда локального минимума нет, а значит нам незачем как-то останавливаться на достигнутом и куда-то сворачивать. Для этого введем специальную функцию $g : [0, 1]$, которая будет возвращать $scale$ нашего шага, причем, так как мы ищем лишь окрестность желаемой точки, то возвращаемое значение будет также учитывать поданный нам $\varepsilon$. Обозначим за $x_{i} = \{x^0_{i}, ~ x^1_{i}, ~ \ldots, ~ x^{n - 1}_i\}$~-- координата точки в $n$-мерном пространстве, $f(x)$~-- заданная функция, $\nabla{f(x)}$~-- градиент функции. Идея~-- изначально мы посчитаем $f(x_{i - 1})$ и $\nabla{f(x_{i - 1})}$, передадим их в функцию для подсчета $scale$, а дальше что есть сил мы будем делать это много раз:
@@ -234,34 +231,34 @@
 		\item Рассмотрим два случая: в том случае, если $a < b$, то это значит, что приближенный минимум находится чуть подальше, но может находиться раньше границы шага, однако в ином же случае~-- точка находится много раньше, чем актуальная длина шага. Таким образом, в первом~-- мы смещаем левую границу, а в втором~-- правую.
 	\end{enumerate}
 	В качестве промежуточного итога предоставим псевдо-алгоритм для решения этой задачи:
-	\begin{lstlisting}
-	function $f(x)$:
-		/*$implementation~defined$*/
+	\begin{pseudocode}
+function $f(x)$:
+	/*$implementation~defined$*/
 
-	function $\nabla{f(x)}$:
-		return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$
+function $\nabla{f(x)}$:
+	return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$;
 
-	function $scale(p_1, ~ p_2)$:
-		$l, r \gets 0, 1$
-		$\forall~\infty$:
-			$m \gets \dfrac{l + r}{2}$
-			$\alpha \gets \lambda \cdot (m \pm \varepsilon)$
-			$a, b \gets p_1 - p_2 \cdot \alpha$
+function $scale(p_1, ~ p_2)$:
+	$l, r \gets 0, 1$;
+	$\forall~\infty$ do
+		$m \gets \dfrac{l + r}{2}$;
+		$\alpha \gets \lambda \cdot (m \pm \varepsilon)$;
+		$a, b \gets p_1 - p_2 \cdot \alpha$;
 
-			if $a < b$ then
-				$l \gets m$
-			else
-				$r \gets m$
+		if $a < b$ then
+			$l \gets m$;
+		else
+			$r \gets m$;
 
-			if $|l - r| \leqslant \varepsilon$ then
-				break
+		if $|l - r| \leqslant \varepsilon$ then
+			break;
 
-	function $gradient\_dichotomy$:
-		$x_{0} \gets \text{INIT}$
-		$\lambda \gets \texttt{const}$
-		$\forall~i \in [1, k]$:
-			$x_{i} \gets x_{i - 1} - \lambda \cdot \texttt{scale}(f(x_{i - 1}), \nabla{f(x_{i - 1})})$
-	\end{lstlisting}
+function $gradient\_dichotomy$:
+	$x_{0} \gets \text{INIT}$;
+	$\lambda \gets \texttt{const}$;
+	$\forall~i \in [1, k]$ do
+		$x_{i} \gets x_{i - 1} - \lambda \cdot \texttt{scale}(f(x_{i - 1}), \nabla{f(x_{i - 1})})$;
+	\end{pseudocode}
 	\subsection*{Пример 1: <<\texttt{scipy.optimize.rosen}>>}
 	Посмотрим на функцию Розенброка, которая, как мы знаем, выглядит вот так: $f(x, y) = (1 - x)^{2} + 100 \cdot (y - x^2)^2$ в трехмерном пространстве (мы, как мы помним, договорились об этом раньше). Она имеет глобальный минимум в точке $\langle 1, ~ 1 \rangle$, где $f(x, y) = 0$. Положим $\text{INIT} = \{0.4, ~ -0.9\}$, а шагом алгоритма установим $learning~rate = 0.005$ для градиентного спуска. Запустим же нашего зверя на добычу и посмотрим на результат.
 	\begin{figure}[H]
@@ -312,48 +309,48 @@
 	Проанализируйте траекторию градиентного спуска на примере квадратичных функций. Для этого придумайте две-три квадратичные функции от двух переменных, на которых работа методов будет отличаться.
 	\subsection*{Решение}
 	В жизни любого человека приходит момент, когда ему наверняка захочется сравнить две изученные им темы и посмотреть, кто же из них более эффективный и правильный в плане выполнения изначально заданной задачи. Методы, используемые в этом задании, уже были подробно разобраны в первом и во втором задании. Кратко напомним псевдо-код алгоритма градиентного спуска:
-	\begin{lstlisting}
-	function $f(x)$:
-		/*$implementation~defined$*/
+	\begin{pseudocode}
+function $f(x)$:
+	/*$implementation~defined$*/
 
-	function $\nabla{f(x)}$:
-		return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$
-
-	function $gradient(f(x))$:
-		$x_{0} \gets \text{INIT}$
-		$\lambda \gets \texttt{const}$
-		$\forall i \in [1, k]$:
-		    $x_{i} \gets x_{i - 1} - \lambda \cdot \nabla{f(x_{i - 1})}$
-	\end{lstlisting}
+function $\nabla{f(x)}$:
+	return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$;
+	
+function $gradient(f(x))$:
+	$x_{0} \gets \text{INIT}$;
+	$\lambda \gets \texttt{const}$;
+	$\forall i \in [1, k]$ do
+		$x_{i} \gets x_{i - 1} - \lambda \cdot \nabla{f(x_{i - 1})}$;
+	\end{pseudocode}
 	И для градиентного спуска на основе метода дихотомии:
-	\begin{lstlisting}
-	function $f(x)$:
-		/*$implementation~defined$*/
+	\begin{pseudocode}
+function $f(x)$:
+	/*$implementation~defined$*/
 
-	function $\nabla{f(x)}$:
-		return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$
+function $\nabla{f(x)}$:
+	return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$;
+	
+function $scale(p_1, ~ p_2)$:
+	$l, r \gets 0, 1$;
+	$\forall~\infty$ do
+		$m \gets \dfrac{l + r}{2}$;
+		$\alpha \gets \lambda \cdot (m \pm \varepsilon)$;
+		$a, b \gets p_1 - p_2 \cdot \alpha$;
+	
+		if $a < b$ then
+			$l \gets m$;
+		else
+			$r \gets m$;
 
-	function $scale(p_1, ~ p_2)$:
-		$l, r \gets 0, 1$
-		$\forall~\infty$:
-			$m \gets \dfrac{l + r}{2}$
-			$\alpha \gets \lambda \cdot (m \pm \varepsilon)$
-			$a, b \gets p_1 - p_2 \cdot \alpha$
+		if $|l - r| \leqslant \varepsilon$ then
+			break;
 
-			if $a < b$ then
-				$l \gets m$
-			else
-				$r \gets m$
-
-			if $|l - r| \leqslant \varepsilon$ then
-				break
-
-	function $gradient\_dichotomy$:
-		$x_{0} \gets \text{INIT}$
-		$\lambda \gets \texttt{const}$
-		$\forall~i \in [1, k]$:
-			$x_{i} \gets x_{i - 1} - \lambda \cdot \texttt{scale}(f(x_{i - 1}), \nabla{f(x_{i - 1})})$
-	\end{lstlisting}
+function $gradient\_dichotomy$:
+	$x_{0} \gets \text{INIT}$;
+	$\lambda \gets \texttt{const}$;
+	$\forall~i \in [1, k]$ do
+		$x_{i} \gets x_{i - 1} - \lambda \cdot \texttt{scale}(f(x_{i - 1}), \nabla{f(x_{i - 1})})$;
+	\end{pseudocode}
 	Как уже было сказано ранее, градиентный спуск проигрывает на неочевидных и не тривиальных функциях. Метод дихотомии же, по второму пункту, успешно справлялся с простыми случаям. Посмотрим на то, как будет справляться это метод на квадратичных функциях.
 	\subsection*{Пример 1}
 	В качестве первого примера мы возьмем уже знакомого нам друга~-- $f(x, y) = x^{2} + y^{2}$. Зададим вновь $learning~rate = 1$ для градиентного спуска, специально для того, чтобы шаг алгоритма был повторяющийся для демонстрации работы метода дихотомии на той же функции с тем же $learning~rate$. Также зададим начальной точкой точку $\langle 35, ~ 50 \rangle$ и максимальным количеством шагов в $60$. Запустим же алгоритмы и посмотрим на результат.
@@ -579,20 +576,20 @@
 	Итак, пусть дано число обусловленности $k$, положим $\text{MAX} = k \cdot \text{MIN}$~-- максимальное по модулю значение собственного числа матрицы, а в качестве минимального возьмем случайное число из ограниченного операционной системой диапазоном, например $[0, 2^{\log_{2}{X}} - 1]$. Тогда, наконец, все остальные элементы следует брать из диапазона $[\text{MIN} + 1, \text{MIN} \cdot k)$.
 
 	В качестве промежуточного итога предоставим псевдо-алгоритм для решения этой задачи:
-	\begin{lstlisting}
-	function $random(l, r)$:
-		return $randomized$ $\mathtt{Ret} \in [l, \ldots, r)$
-	
-	function $generate(n, k)$:
-		$\text{MIN} \gets \text{random}(0, 2^{64} - 1)$
-		$\text{MAX} \gets \text{MIN} \cdot k$
-		$q \gets [\text{MIN},~\text{MAX},~x_{0}~\ldots,~x_{n - 3}], ~ \forall x_{i} = 0$
-
-		$\forall i \in [2, n]$:
-			$q_{i} \gets random(\text{MIN} + 1,~\text{MAX})$
-
-		return q
-	\end{lstlisting}
+	\begin{pseudocode}
+function $random(l, r)$:
+	return $randomized$ $\mathtt{Ret} \in [l, \ldots, r)$;
+		
+function $generate(n, k)$:
+	$\text{MIN} \gets \text{random}(0, 2^{64} - 1)$;
+	$\text{MAX} \gets \text{MIN} \cdot k$;
+	$q \gets [\text{MIN},~\text{MAX},~x_{0}~\ldots,~x_{n - 3}], ~ \forall x_{i} = 0$
+		
+	$\forall i \in [2, n]$ do
+		$q_{i} \gets random(\text{MIN} + 1,~\text{MAX})$;
+		
+	return $q$;
+	\end{pseudocode}
 	\newpage
 	\section*{Задача 6 и 7}
 	\subsection*{Постановка задачи}
@@ -601,64 +598,64 @@
 	Для понимания числа итераций, необходимых градиентному спуску для сходимости в некоторый приближенный минимум от двух меняющихся переменных $n$ и $k$ мы, для ускорения и недопущения плохо сгенерированных функций, поставим два условия остановки цикла: первое~-- это самая простая проверка критерия на $\varepsilon$, запрашивая тем самым, если ли дальше смысл идти, второе~-- это предельное количество итераций, если нынешнее число все же превысило предел, то цикл тут же останавливается.
 
 	В качестве промежуточного итога предоставим псевдо-алгоритм для решения этой задачи:
-	\begin{lstlisting}
-		function $\nabla{f(x)}$:
-			return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$
-		
-		function $scale(p_1, ~ p_2)$:
-			$l, r \gets 0, 1$
+	\begin{pseudocode}
+function $\nabla{f(x)}$:
+	return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$;
 
-			$\forall~\infty$:
-				$m \gets \dfrac{l + r}{2}$
-				$\alpha \gets \lambda \cdot (m \pm \varepsilon)$
-				$a, b \gets p_1 - p_2 \cdot \alpha$
-		
-				if $a < b$ then
-					$l \gets m$
-				else
-					$r \gets m$
-		
-				if $|l - r| \leqslant \varepsilon$ then
-					break
-		
-		function $gradient\_dichotomy$:
-			$x_{0} \gets \text{INIT}$
-			$\lambda \gets \texttt{const}$
-			$\text{counter} \gets 0$
+function $scale(p_1, ~ p_2)$:
+	$l, r \gets 0, 1$;
 
-			$\forall~i \in [1, k]$:
-				$x_{i} \gets x_{i - 1} - \lambda \cdot \texttt{scale}(f(x_{i - 1}), \nabla{f(x_{i - 1})})$
+	$\forall~\infty$ do
+		$m \gets \dfrac{l + r}{2}$;
+		$\alpha \gets \lambda \cdot (m \pm \varepsilon)$;
+		$a, b \gets p_1 - p_2 \cdot \alpha$;
+		
+		if $a < b$ then
+			$l \gets m$;
+		else
+			$r \gets m$;
 
-				if $|x_{i} - x_{i - 1}| \leqslant \varepsilon$ then
-					break
+		if $|l - r| \leqslant \varepsilon$ then
+			break;
 
-				if $\text{counter} = \text{max\_iter}$ then
-					break
-				else
-					$\text{counter}++$
-		
-			return $\text{counter}$
-		
-		function $random(l, r)$:
-			return $randomized$ $\mathtt{Ret} \in [l, \ldots, r)$
-		
-		function $generate(n, k)$:
-			$\text{MIN} \gets \text{random}(0, 2^{64} - 1)$
-			$\text{MAX} \gets \text{MIN} \cdot k$
-			$q \gets [\text{MIN},~\text{MAX},~x_{0}~\ldots,~x_{n - 3}], ~ \forall x_{i} = 0$
-		
-			$\forall i \in [2, n]$:
-				$q_{i} \gets random(\text{MIN} + 1,~\text{MAX})$
-		
-			return q
-		
-		function $main$:
-			$q \gets \{\}$
+function $gradient\_dichotomy$:
+	$x_{0} \gets \text{INIT}$;
+	$\lambda \gets \texttt{const}$;
+	$\text{counter} \gets 0$;
 
-			$\forall n \in [2, 10^{3}]$ do
-				$\forall k \in [1, 10^{3}]$ do
-					$q \cup \text{gradient(generate(n, k))}$
-	\end{lstlisting}
+	$\forall~i \in [1, k]$ do
+		$x_{i} \gets x_{i - 1} - \lambda \cdot \texttt{scale}(f(x_{i - 1}), \nabla{f(x_{i - 1})})$;
+
+		if $|x_{i} - x_{i - 1}| \leqslant \varepsilon$ then
+			break;
+
+		if $\text{counter} = \text{max\_iter}$ then
+			break;
+		else
+			$\text{counter}++$;
+
+	return $\text{counter}$;
+		
+function $random(l, r)$:
+	return $randomized$ $\mathtt{Ret} \in [l, \ldots, r)$;
+
+function $generate(n, k)$:
+	$\text{MIN} \gets \text{random}(0, 2^{64} - 1)$;
+	$\text{MAX} \gets \text{MIN} \cdot k$;
+	$q \gets [\text{MIN},~\text{MAX},~x_{0}~\ldots,~x_{n - 3}], ~ \forall x_{i} = 0$;
+
+	$\forall i \in [2, n]$ do
+		$q_{i} \gets random(\text{MIN} + 1,~\text{MAX})$;
+
+	return $q$;
+
+function $main$:
+	$q \gets$ [];
+
+	$\forall n \in [2, 10^{3}]$ do
+		$\forall k \in [1, 10^{3}]$ do
+			$q \cup \text{gradient(generate(n, k))}$;
+	\end{pseudocode}
 	\subsection*{Исследовательская часть}
 	Интерпретируем наш псевдо-алгоритм в жизнь и выведем графики зависимости $n$, $k$ от количества итераций до сходимости. В качестве критериев мы поставим уже знакомые нам условия остановки: предельное число и сходимости от минимальной точки на расстоянии $\varepsilon$. Рассмотрим с шагом $0.01$, для всех $k \in [1, 1000]$ при $n = 2$
 	\begin{figure}[H]
@@ -690,49 +687,49 @@
 	где в качестве $c_{1}$ выбирается, как правило, при окрестности нуля, то есть $c_{1} \approx 10^{-6}$, а $c_{2}$, наоборот, в окрестности единицы, например, $c_{2} = 0.9$. Разберемся с условиями: первое говорит о том, что если мы делаем какой-то большой $learning~rate$ при итерации, то и изменение значения по модулю должно быть достаточно большим; второе же~-- посчитанный градиент в той точке, куда мы собираемся пойти, должен быть в несколько раз больше, чем текущий.
 
 	На основе этих данных мы можем задать что-то подобие на бинарный поиск по ответу, где в случае если наша точка не удовлетворена первым условие, то мы сдвигаем как бы правую границу, в случае неудовлетворенности второй~-- левую. Наконец, в если оба удовлетворены~-- возвращаем значение. В качестве промежуточного итога предоставим псевдо-алгоритм для решения этой задачи:
-	\begin{lstlisting}
-		function $f(x)$:
-			/*$implementation~defined$*/
-		
-		function $\nabla{f(x)}$:
-			return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$
+	\begin{pseudocode}
+function $f(x)$:
+	/*$implementation~defined$*/
 
-		function $first(\alpha)$:
-			$l \gets f(x_{k} + \alpha \cdot p_{k})$
-			$r \gets f(x_{k}) + c_{1} \cdot \alpha \cdot \nabla{f^{T}_{k}p_{k}}$
-			return $l \leqslant r$
+function $\nabla{f(x)}$:
+	return $\left[f(x)\dfrac{\partial}{\partial{x^{0}}}, ~ f(x)\dfrac{\partial}{\partial{x^{1}}}, ~ \ldots, ~ f(x)\dfrac{\partial}{\partial{x^{n - 1}}}\right]$;
 
-		function $second(\alpha)$:
-			$l \gets \nabla{f(x_{k} + \alpha \cdot p_{k})^{T}p{k}}$
-			$r \gets c_{2} \cdot \nabla{f^{T}_{k}p_{k}}$
-			return $l \geqslant r$
+function $first(\alpha)$:
+	$l \gets f(x_{k} + \alpha \cdot p_{k})$;
+	$r \gets f(x_{k}) + c_{1} \cdot \alpha \cdot \nabla{f^{T}_{k}p_{k}}$;
+	return $l \leqslant r$;
 
-		function $find(\alpha)$:
-			$\alpha_{\text{low}} \gets 0$
-			$\alpha_{\text{high}} \gets \infty$
-			$\alpha_{\text{prev}} \gets 0$
-			$\alpha_{\text{current}} \gets \alpha$
+function $second(\alpha)$:
+	$l \gets \nabla{f(x_{k} + \alpha \cdot p_{k})^{T}p{k}}$;
+	$r \gets c_{2} \cdot \nabla{f^{T}_{k}p_{k}}$;
+	return $l \geqslant r$;
 
-			$\forall~\infty$:
-				if not $first(\alpha)$ then
-					$\alpha_{\text{high}} \gets \alpha_{\text{current}}$
-					$\alpha_{\text{current}} \gets \dfrac{\alpha_{\text{low}} + \alpha_{\text{high}}}{2}$
-				else if not $second(\alpha)$ then
-					$\alpha_{\text{low}} \gets \alpha_{\text{current}}$
-					if $\alpha_{\text{high}} \equiv \infty$:
-						$\alpha_{\text{current}} \gets 2 \cdot \alpha_{\text{low}}$
-					else
-						$\alpha_{\text{current}} \gets \dfrac{\alpha_{\text{low}} + \alpha_{\text{high}}}{2}$
-				else
-					return $\alpha_{\text{current}}$
+function $find(\alpha)$:
+	$\alpha_{\text{low}} \gets 0$;
+	$\alpha_{\text{high}} \gets \infty$;
+	$\alpha_{\text{prev}} \gets 0$;
+	$\alpha_{\text{current}} \gets \alpha$;
 
-				if $\alpha_{\text{current}} - \alpha_{\text{prev}} \leqslant \varepsilon$:
-					break
+	$\forall~\infty$ do
+		if not $first(\alpha)$ then
+			$\alpha_{\text{high}} \gets \alpha_{\text{current}}$;
+			$\alpha_{\text{current}} \gets \dfrac{\alpha_{\text{low}} + \alpha_{\text{high}}}{2}$;
+		else if not $second(\alpha)$ then
+			$\alpha_{\text{low}} \gets \alpha_{\text{current}}$;
+			if $\alpha_{\text{high}} \equiv \infty$ then
+				$\alpha_{\text{current}} \gets 2 \cdot \alpha_{\text{low}}$;
+			else
+				$\alpha_{\text{current}} \gets \dfrac{\alpha_{\text{low}} + \alpha_{\text{high}}}{2}$;
+		else
+			return $\alpha_{\text{current}}$;
 
-				$\alpha_{\text{prev}} \gets \alpha_{\text{current}}$
+		if $\alpha_{\text{current}} - \alpha_{\text{prev}} \leqslant \varepsilon$:
+			break;
 
-			return $\alpha_{\text{current}}$
-	\end{lstlisting}
+		$\alpha_{\text{prev}} \gets \alpha_{\text{current}}$;
+
+	return $\alpha_{\text{current}}$;
+	\end{pseudocode}
 	\subsection*{Пример}
 	В качестве примера мы рассмотрим простую функцию параболоида $f(x, y) = x^{2} + y^{2}$ и начнем мы искать приближенный минимум из точки $\langle-40, ~ 50\rangle$. Запустим алгоритм и посмотрим на выходные значения.
 	\begin{figure}[H]
